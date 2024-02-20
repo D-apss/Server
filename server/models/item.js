@@ -1,13 +1,16 @@
 "use strict";
 const { Model } = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
   class Item extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
     static associate(models) {
       Item.hasMany(models.Bid);
     }
   }
-
   Item.init(
     {
       name: {
@@ -15,22 +18,22 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notNull: {
-            msg: `Name is required`
+            msg: `Name is required`,
           },
           notEmpty: {
-            msg: `Name is required`
+            msg: `Name is required`,
           },
         },
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
           notNull: {
-            msg: `Description is required`
+            msg: `Description is required`,
           },
           notEmpty: {
-            msg: `Description is required`
+            msg: `Description is required`,
           },
         },
       },
@@ -39,10 +42,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notNull: {
-            msg: `Image URL is required`
+            msg: `Image URL is required`,
           },
           notEmpty: {
-            msg: `Image URL is required`
+            msg: `Image URL is required`,
           },
         },
       },
@@ -51,10 +54,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notNull: {
-            msg: `Price is required`
+            msg: `Price is required`,
           },
           notEmpty: {
-            msg: `Price is required`
+            msg: `Price is required`,
           },
         },
       },
