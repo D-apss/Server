@@ -1,0 +1,2 @@
+# Server
+Khusus-Server"-aja
