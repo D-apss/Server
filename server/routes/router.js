@@ -3,12 +3,13 @@ const router = express.Router();
 const AuthRouter = require("./AuthRouter");
 const ItemRouter = require("./ItemRouter");
 const authentication = require("../middlewares/authentication");
+const PublicRouter = require("./PublicRouter");
 
 //setiap endpoint berbeda nnti buat file router masing-masing
 
 router.use(AuthRouter);
-
 router.use(authentication);
+router.use("/pub", PublicRouter);
 //apapun dibawah ini kena authentication
 router.use("/items", ItemRouter);
 
