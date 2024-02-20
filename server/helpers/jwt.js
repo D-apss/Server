@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require("jsonwebtoken");
-const secret ="rahasia";
+const secret = "rahasia";
 const signToken = (payload) => {
    return jwt.sign(payload, secret);
 };
