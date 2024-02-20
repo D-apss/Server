@@ -1,8 +1,12 @@
 "use strict";
 const { Model } = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
   class Bid extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
     static associate(models) {
       Bid.belongsTo(models.User);
       Bid.belongsTo(models.Item);
@@ -11,47 +15,15 @@ module.exports = (sequelize, DataTypes) => {
 
   Bid.init(
     {
-      amount: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          notNull: {
-            msg: `Amount is required`
-          },
-          notEmpty: {
-            msg: `Amount is required`
-          },
-        }
-      },
-      UserId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          notNull: {
-            msg: `UserId is required`
-          },
-          notEmpty: {
-            msg: `UserId is required`
-          },
-        }
-      },
-      ItemId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          notNull: {
-            msg: `ItemId is required`
-          },
-          notEmpty: {
-            msg: `ItemId is required`
-          },
-        }
-      },
+      amount: DataTypes.INTEGER,
+      UserId: DataTypes.INTEGER,
+      ItemId: DataTypes.INTEGER,
     },
     {
       sequelize,
       modelName: "Bid",
     }
   );
+
   return Bid;
 };
