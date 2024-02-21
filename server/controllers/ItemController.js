@@ -30,4 +30,34 @@ module.exports = class ItemController {
       next(error);
     }
   }
+
+  static async getAllItem(req, res, next) {
+    try {
+      const items = await Item.findAll();
+
+      res.status(200).json(items);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async deleteById(req, res, next) {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async updateById(req, res, next) {
+    try {
+      const item = await Item.findByPk(req.params.id);
+      if (!item) {
+         throw { name: "NotFound" };
+      }
+      await item.update(req.body);
+      res.status(200).json(item);
+   } catch (error) {
+      next(error);
+   }
+  }
 };
