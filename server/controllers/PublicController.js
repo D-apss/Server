@@ -13,6 +13,20 @@ module.exports = class PublicController {
     }
   }
 
+  static async getItemById(req, res, next) {
+    try {
+      const item = await Item.findByPk(req.params.id);
+
+      if (!item) {
+        throw { name: "NotFound" };
+      }
+
+      res.status(200).json(item);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async bidItem(req, res, next) {
     try {
       const { amount } = req.body;
@@ -51,9 +65,14 @@ module.exports = class PublicController {
     }
   }
 
-  static async getHighestBid(req, res, next) {
+  static async getHighestBidById(req, res, next) {
     try {
-      const highestBid = await Bid.findAll({ include: User });
+      const { id } = req.params;
+
+      const highestBid = await Bid.findAll({
+        where: { ItemId: id },
+        include: User,
+      });
 
       if (!highestBid) {
         throw { name: "highestBidNotAvailable" };
