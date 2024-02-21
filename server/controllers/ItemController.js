@@ -43,6 +43,18 @@ module.exports = class ItemController {
 
   static async deleteById(req, res, next) {
     try {
+      const { id } = req.params;
+      const data = await Item.findByPk(id);
+
+      if (!data) {
+        throw { name: "Error Not Found" };
+      }
+
+      await Item.destroy({
+        where: { id },
+      }
+      );
+      res.status(200).json(data);
     } catch (error) {
       next(error);
     }
@@ -52,12 +64,12 @@ module.exports = class ItemController {
     try {
       const item = await Item.findByPk(req.params.id);
       if (!item) {
-         throw { name: "NotFound" };
+        throw { name: "NotFound" };
       }
       await item.update(req.body);
       res.status(200).json(item);
-   } catch (error) {
+    } catch (error) {
       next(error);
-   }
+    }
   }
 };
