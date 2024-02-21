@@ -200,11 +200,11 @@
 ```json
 [
   {
-      "id": 1,
-      "name": "Nissan GT-R Skyline R34",
-      "description": "Legenda mobil sport Jepang yang terkenal dengan kinerja dan keindahannya.",
-      "imageUrl": "https://theitemdb.com/nissan_gtr_skyline_r34.jpg",
-      "price": 1200000000,
+    "id": 1,
+    "name": "Nissan GT-R Skyline R34",
+    "description": "Legenda mobil sport Jepang yang terkenal dengan kinerja dan keindahannya.",
+    "imageUrl": "https://theitemdb.com/nissan_gtr_skyline_r34.jpg",
+    "price": 1200000000,
     "createdAt": "2024-02-21T05:20:31.141Z",
     "updatedAt": "2024-02-21T05:20:31.141Z"
   },
@@ -226,6 +226,7 @@
     "createdAt": "2024-02-21T05:20:31.141Z",
     "updatedAt": "2024-02-21T05:20:31.141Z"
   },
+  
   ...
 ]
 ```

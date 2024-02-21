@@ -33,7 +33,6 @@ const DB = {
 
 io.on("connection", (socket) => {
   // console.log("setup");
-  // console.log(socket.id)
 
   socket.emit("message", "Halo, selamat datang di realtime bid")
   socket.emit("count:Bid", DB.lastBid)
