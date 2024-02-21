@@ -47,7 +47,7 @@ module.exports = class ItemController {
       const data = await Item.findByPk(id);
 
       if (!data) {
-        throw { name: "Error Not Found" };
+        throw { name: "ErrorNotFound" };
       }
 
       await Item.destroy({
