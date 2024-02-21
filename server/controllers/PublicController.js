@@ -33,7 +33,15 @@ module.exports = class PublicController {
 
   static async getAllBidByUserId(req, res, next) {
     try {
-      //code
+      const bids = await Bid.find({
+        userId: req.params.userId
+      });
+
+      if (!bids) {
+        throw { name: "bidNotAvailable" };
+      }
+
+      res.status(200).json(bids)
     } catch (error) {
       next(error);
     }
@@ -41,7 +49,14 @@ module.exports = class PublicController {
 
   static async getHighestBid(req, res, next) {
     try {
-      //code
+      const highestBid = await Bid.findOne({ productId: req.params.productId })
+        .sort('-amount')
+        .populate('userId');
+
+      if (!highestBid) {
+        throw { name: "highestBidNotAvailable" };
+      }
+      res.status(200).json(highestBid);
     } catch (error) {
       next(error);
     }
