@@ -8,15 +8,19 @@ const{Server} = require ("socket.io") //socket io setup
 
 const app = express();
 const httpServer = createServer(app) //socket io setup
-const io = new Server(httpServer) //socket io setup
+const io = new Server(httpServer, {
+  cors: {
+    origin: "http://localhost:5173"
+  }
+});
 
 const port = 3000;
 const router = require("./routes/router");
 const errorHandler = require("./middlewares/ErrorHandler");
 
 
-const cors = require("cors");
-app.use(cors());
+// const cors = require("cors"); <-- nyalakan cors kalau mau hilangkan socket io
+// app.use(cors()); <-- nyalakan cors kalau mau hilangkan socket io
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -26,7 +30,7 @@ app.use(errorHandler);
 
 
 io.on("connection", (socket) => {
-
+console.log("setup");
 })//socket io setup
 
 httpServer.listen(port, () => {
