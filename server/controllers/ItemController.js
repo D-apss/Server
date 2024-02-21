@@ -61,15 +61,22 @@ module.exports = class ItemController {
       }
    }
 
-   static async getItemById(req, res, next) {
+  static async deleteById(req, res, next) {
     try {
-      const item = await Item.findByPk(req.params.id)
-      if(!item){
-        throw {name: "NotFound"}
+      const { id } = req.params;
+      const data = await Item.findByPk(id);
+
+      if (!data) {
+        throw { name: "ErrorNotFound" };
       }
-      res.status(200).json(item)
+
+      await Item.destroy({
+        where: { id },
+      }
+      );
+      res.status(200).json(data);
     } catch (error) {
-       next(error);
+      next(error);
     }
- }
+  }
 };

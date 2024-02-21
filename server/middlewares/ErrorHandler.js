@@ -36,7 +36,10 @@ const errorHandler = (err, req, res, next) => {
          res.status(404).json({ message: "No bids were found for this product." });
          break;
       case "NotFound":
-         res.status(404).json({ message: "Item not found" });
+         res.status(404).json({ message: "Item not found." });
+         break;
+      case "ErrorNotFound":
+         res.status(404).json({ message: "Item not Discovered." });
          break;
       default:
          console.log(err);
