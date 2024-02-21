@@ -30,4 +30,28 @@ module.exports = class ItemController {
       next(error);
     }
   }
+
+  static async getAllItem(req, res, next) {
+    try {
+      const items = await Item.findAll();
+
+      res.status(200).json(items);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async deleteById(req, res, next) {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async updateById(req, res, next) {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  }
 };
