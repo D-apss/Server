@@ -8,10 +8,13 @@
 <div align="center">
   <img src="https://img.shields.io/badge/Javascript-ES6-yellow.svg">
   <img src="https://img.shields.io/badge/React-5.15.1-blue.svg">
-  <img src="https://img.shields.io/badge/License-MIT-red.svg">
+  <img src="https://img.shields.io/badge/License-MIT-orange.svg">
   <img src="https://img.shields.io/badge/Tools-Oauth-white"> 
-  <img src="https://img.shields.io/badge/Vite-5.13.7-purple">
-  <img src="https://img.shields.io/badge/TailWinds-blue"> 
+  <img src="https://img.shields.io/badge/vite@latest-violet">
+  <img src="https://img.shields.io/badge/postcss -grey">
+  <img src="https://img.shields.io/badge/autoprefixer-red">
+  <img src="https://img.shields.io/badge/tailwindcss-blue"> 
+  <img src="https://img.shields.io/badge/bootstrap@5.3.3-purple"> 
 </div>
 
 # Server
