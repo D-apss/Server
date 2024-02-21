@@ -13,12 +13,12 @@ module.exports = class PublicController {
     }
   }
 
-  static async getUserById(req,res,next){
+  static async getUserById(req, res, next) {
     try {
-      const user = await User.findByPk(req.params.id)
-      res.status(200).json(user)
+      const user = await User.findByPk(req.params.id);
+      res.status(200).json(user);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 
@@ -54,7 +54,7 @@ module.exports = class PublicController {
     }
   }
 
-  static async getAllBidByUserId(req, res, next) {
+  static async getAllHighestBidsByUserId(req, res, next) {
     const UserId = req.params.id;
     try {
       const bids = await Bid.findAll({
@@ -62,13 +62,22 @@ module.exports = class PublicController {
         include: {
           model: Item,
         },
+        order: [["amount", "DESC"]],
       });
 
       if (bids.length === 0) {
         throw { name: "bidNotAvailable" };
       }
 
-      res.status(200).json(bids);
+      const highestBids = bids.reduce((acc, bid) => {
+        const existingBid = acc.find((b) => b.ItemId === bid.ItemId);
+        if (!existingBid) {
+          acc.push(bid);
+        }
+        return acc;
+      }, []);
+
+      res.status(200).json(highestBids);
     } catch (error) {
       next(error);
     }
