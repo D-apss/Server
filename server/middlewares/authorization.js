@@ -7,7 +7,7 @@ const authorizationAdmin = (req, res, next) => {
   }
 };
 
-const authorizationAdminOrBidder = async (req, res, next) => {
+const authorizationAdminOrBidder = (req, res, next) => {
   try {
     if (req.user.role !== "Bidder") throw { name: "forbiddenforadmin" };
     next();
