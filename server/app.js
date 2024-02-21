@@ -19,8 +19,8 @@ const router = require("./routes/router");
 const errorHandler = require("./middlewares/ErrorHandler");
 
 
-// const cors = require("cors"); <-- nyalakan cors kalau mau hilangkan socket io
-// app.use(cors()); <-- nyalakan cors kalau mau hilangkan socket io
+// const cors = require("cors"); <-- nyalakan cors kalau mau hilangkan socket io.
+// app.use(cors()); <-- nyalakan cors kalau mau hilangkan socket io.
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
