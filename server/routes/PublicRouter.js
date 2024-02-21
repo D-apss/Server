@@ -7,13 +7,13 @@ const router = express.Router();
 router.get("/items", PublicController.getAllItems);
 router.get("/items/:id", PublicController.getItemById);
 router.get("/items/bid/highest/:id", PublicController.getHighestBidById);
-router.get("/user/:id", PublicController.getUserById)
+router.get("/user/:id", PublicController.getUserById);
 router.post(
   "/items/:id/bid",
   authentication,
   authorizationAdminOrBidder,
   PublicController.bidItem
 );
-router.get("/items/bid/:id", PublicController.getAllBidByUserId);
+router.get("/items/bid/:id", PublicController.getAllHighestBidsByUserId);
 
 module.exports = router;
