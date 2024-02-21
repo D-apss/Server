@@ -34,8 +34,9 @@ module.exports = class AuthController {
       if (!comparedUser) throw { name: "InvalidUser" };
 
       const access_token = signToken({ id: user.id });
+      const id = user.id
 
-      res.status(200).json({ message: "Success Login", access_token });
+      res.status(200).json({ message: "Success Login", access_token, id });
     } catch (error) {
       next(error);
     }
