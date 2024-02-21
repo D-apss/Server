@@ -42,7 +42,7 @@ module.exports = class AuthController {
   }
 
   static async googleLogin(req, res, next) {
-    console.log(req.headers);
+    // console.log(req.headers);
     try {
       const ticket = await oauth2Client.verifyIdToken({
         idToken: req.headers["google-token"],
@@ -50,7 +50,7 @@ module.exports = class AuthController {
       });
 
       const payload = ticket.getPayload();
-      console.log(payload);
+      // console.log(payload);
 
       let user = await User.findOne({
         where: {

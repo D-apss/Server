@@ -10,7 +10,7 @@ const app = express();
 const httpServer = createServer(app); //socket io setup
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: true,
   },
 });
 
@@ -27,8 +27,22 @@ app.use(express.json());
 app.use(router);
 app.use(errorHandler);
 
+const DB = {
+  lastBid: 0
+}
+
 io.on("connection", (socket) => {
-  console.log("setup");
+  // console.log("setup");
+  console.log(socket.id)
+
+  socket.emit("message", "Halo, selamat datang di realtime bid")
+  socket.emit("count:Bid", DB.lastBid)
+
+  socket.on("newBid", (newCount) =>{
+    io.emit("highestBid", newCount)
+
+    DB.lastBid = newCount
+  })
 }); //socket io setup
 
 httpServer.listen(port, () => {
