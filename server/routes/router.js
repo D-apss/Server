@@ -8,8 +8,8 @@ const PublicRouter = require("./PublicRouter");
 //setiap endpoint berbeda nnti buat file router masing-masing
 
 router.use(AuthRouter);
-router.use(authentication);
 router.use("/pub", PublicRouter);
+router.use(authentication);
 //apapun dibawah ini kena authentication
 router.use("/items", ItemRouter);
 
