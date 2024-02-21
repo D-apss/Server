@@ -13,6 +13,15 @@ module.exports = class PublicController {
     }
   }
 
+  static async getUserById(req,res,next){
+    try {
+      const user = await User.findByPk(req.params.id)
+      res.status(200).json(user)
+    } catch (error) {
+      next(error)
+    }
+  }
+
   static async getItemById(req, res, next) {
     try {
       const item = await Item.findByPk(req.params.id);
