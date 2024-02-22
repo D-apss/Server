@@ -24,18 +24,20 @@ app.use(express.json());
 app.use(router);
 app.use(errorHandler);
 
-let isBidClosed = false; 
+let isBidClosed = false; // Initialize bid status
 
 io.on("connection", (socket) => {
   socket.emit("message", "Halo, selamat datang di realtime bid");
-  socket.emit("bidClosed", isBidClosed);
+  socket.emit("bidClosed", isBidClosed); // Send initial bid status to the client
+
   socket.on("newBid", (newCount) => {
     io.emit("highestBid", newCount);
   });
-  
+}); //socket io setup
+
 app.post("/closeBid", (req, res) => {
-  isBidClosed = true; 
-  io.emit("bidClosed", isBidClosed); 
+  isBidClosed = true; // Update bid status
+  io.emit("bidClosed", isBidClosed); // Emit event to all clients with the updated bid status
   res.send("Bid closed successfully");
 });
 
