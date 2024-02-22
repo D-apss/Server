@@ -43,4 +43,4 @@ o> Midtrans
 
 ---------------------
 
-# o>>> Explore the Project endpoints detailed below. <<<o
+# o>>> Explore the Project endpoints detailed below.

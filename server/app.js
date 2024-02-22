@@ -32,8 +32,7 @@ io.on("connection", (socket) => {
   socket.on("newBid", (newCount) => {
     io.emit("highestBid", newCount);
   });
-}); //socket io setup
-
+  
 app.post("/closeBid", (req, res) => {
   isBidClosed = true; 
   io.emit("bidClosed", isBidClosed); 
