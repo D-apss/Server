@@ -15,7 +15,7 @@ const io = new Server(httpServer, {
   },
 });
 
-const port = process_env_PORT || 3000;
+const port = process.env.PORT || 3000;
 const router = require("./routes/router");
 const errorHandler = require("./middlewares/ErrorHandler");
 
