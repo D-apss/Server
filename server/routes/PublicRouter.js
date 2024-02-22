@@ -15,5 +15,7 @@ router.post(
   PublicController.bidItem
 );
 router.get("/items/bid/:id", PublicController.getAllHighestBidsByUserId);
+router.patch("/users/me/upgrade/:id", PublicController.upgradeAccount)
+router.get("/payment/midtrans/initiate/:id", authentication, PublicController.initiateMidtransTrx)
 
 module.exports = router;
