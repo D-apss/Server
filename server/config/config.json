@@ -14,6 +14,6 @@
     "dialect": "postgres"
   },
   "production": {
-    "use_env_variable": "postgres://postgres.vyksgaoejtnwwyisusfb:w0YzPMZIZNOTRtXJ@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"
+    "use_env_variable": "DATABASE_URL"
   }
 }
