@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 /* eslint-disable no-unused-vars */
 const express = require("express");
 const { createServer } = require("http"); //socket io setup
@@ -11,7 +15,7 @@ const io = new Server(httpServer, {
   },
 });
 
-const port = 3000;
+const port = process_env_PORT || 3000;
 const router = require("./routes/router");
 const errorHandler = require("./middlewares/ErrorHandler");
 
