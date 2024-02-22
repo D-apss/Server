@@ -1,7 +1,4 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
+/* eslint-disable no-unused-vars */
 const express = require("express");
 const { createServer } = require("http"); //socket io setup
 const { Server } = require("socket.io"); //socket io setup
@@ -27,22 +24,20 @@ app.use(express.json());
 app.use(router);
 app.use(errorHandler);
 
-const DB = {
-  lastBid: 0
-}
+let isBidClosed = false; 
 
 io.on("connection", (socket) => {
-  // console.log("setup");
-
-  socket.emit("message", "Halo, selamat datang di realtime bid")
-  socket.emit("count:Bid", DB.lastBid)
-
-  socket.on("newBid", (newCount) =>{
-    io.emit("highestBid", newCount)
-
-    DB.lastBid = newCount
-  })
-}); //socket io setup
+  socket.emit("message", "Halo, selamat datang di realtime bid");
+  socket.emit("bidClosed", isBidClosed);
+  socket.on("newBid", (newCount) => {
+    io.emit("highestBid", newCount);
+  });
+  
+app.post("/closeBid", (req, res) => {
+  isBidClosed = true; 
+  io.emit("bidClosed", isBidClosed); 
+  res.send("Bid closed successfully");
+});
 
 httpServer.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
